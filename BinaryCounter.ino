@@ -6,9 +6,10 @@ int delay_val = 100;
 void setup() {
   // put your setup code here, to run once:
   // setting each pin as output pin,..... don"t know why should we do this
-  for (int i=0; i<9; i++){
+  for (int i=0; i<8; i++){
     pinMode(ledPin[i],OUTPUT);
     }
+    Serial.begin(9600);
 }
 
 void loop() {
@@ -17,19 +18,20 @@ void loop() {
   for(int counter=0;counter<maxCount; counter++){
     // pass the count number to displayBinary function
     displayBinary(counter);
+    Serial.print("check");
     delay(delay_val);
     }
 }
 
 
 void displayBinary(byte numToShow){
-  for(int i=0; i<8; ++){
+  for(int i=0; i<8; i++){
 
     if(bitRead(numToShow,i)==1){
-      digitalWrite(ledPin[i],HIGH)
+      digitalWrite(ledPin[i],HIGH);
       }
      else{
-            digitalWrite(ledPin[i],LOW)
+            digitalWrite(ledPin[i],LOW);
       }
     }
   }
